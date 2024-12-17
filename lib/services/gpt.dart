@@ -15,7 +15,7 @@ class Gpt {
 
     var body = {
       "model": "gpt-3.5-turbo",
-      "message": [
+      "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": prompt}
       ]
@@ -28,8 +28,6 @@ class Gpt {
         await http.post(uri, headers: header, body: json.encode(body));
     var response = json.decode(request.body);
     String content = response["choices"][0]["message"]["content"];
-    print(content);
-
     return content;
   }
 }
